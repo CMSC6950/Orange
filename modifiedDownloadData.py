@@ -18,5 +18,5 @@ def download(stationid, fromYear,toYear):
         os.remove(fname)
     result = data_frame1[['Date/Time','Year','Month','Day','Max Temp (°C)','Min Temp (°C)']]
     print(result)
-    data_frame1.to_csv("temperatures.csv", index=False)
+    result.to_csv("temperatures.csv", index=False)
     return result
