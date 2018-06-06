@@ -11,10 +11,8 @@ parser.add_argument('tupper', action="store")
 
 args = parser.parse_args()
 
-data = pd.read_csv('data'args.data), skiprows=18
+data = pd.read_csv(args.data)
+data = data.fillna(0)
 
-print(args.data)
-print(args.tbase)
-print(args.tupper)
-
-def gdd:
+for index, row in data.iterrows():
+    print(row.loc['Max Temp (°C)'])
