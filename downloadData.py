@@ -17,11 +17,11 @@ def download(stationid, fromYear,toYear):
         data_frame2 = pd.read_csv(fname, skiprows=24, sep=",")
         data_frame1=pd.concat([data_frame2, data_frame1], join='outer')
         os.remove(fname)
-    columns = ['Date/Time','Year','Month','Day','Max Temp','Min Temp']
-    data_frame1 = data_frame1.reindex(columns=columns)
-    result = data_frame1[['Date/Time','Year','Month','Day','Max Temp','Min Temp']]
+    #columns = ['Date/Time','Year','Month','Day','Max Temp','Min Temp']
+    #data_frame1 = data_frame1.reindex(columns=columns)
+    result = data_frame1.iloc[:,[0,1,2,3,5,7]]
+    #result = data_frame1[['Date/Time','Year','Month','Day','Max Temp','Min Temp']]
     result.to_csv("docs/temperatures.csv", index=False)
     return result
 
-download(3932, 2016, 2017)
-# for runing the code  temporarily use " download(3932, 2016,2017)"
+download(49568, 2015, 2018)
