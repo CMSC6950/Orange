@@ -42,4 +42,14 @@ Jonathan Conway
 
 # The GDD Calculation
 
+--
+
+# The Accumulated GDD vs Time Plots
+
 ---
+
+# The GitHub Repo
+
+---
+
+# The LaTeX Report
