@@ -1,4 +1,4 @@
-import import pandas as pd
+import pandas as pd
 import matplotlib.pylab as plt
 import numpy as np
 from clean-data import clean_data
@@ -7,14 +7,14 @@ from downloadData import download
 lyst=[]
 def MinMaxPlot(lyst):
     #lyst includes 6 values - name of the city and the year for three cities 
-    f=download(city_to_stationID(lyst[0]), lyst[1])
-    s=download(city_to_stationID(lyst[2]), lyst[3])
-    v=download(city_to_stationID(lyst[4]), lyst[5])
+    f=download(city_to_stationID(lyst[0]), lyst[1],lyst[1])
+    s=download(city_to_stationID(lyst[2]), lyst[3],lyst[3])
+    v=download(city_to_stationID(lyst[4]), lyst[5],lyst[5])
     
     
-    df = f.iloc[:,[0,1,2,3,5,7,9]]
-    df1= s.iloc[:,[0,1,2,3,5,7,9]]
-    df2= v.iloc[:,[0,1,2,3,5,7,9]]
+    df = f.iloc[:,[0,1,2,3,4,5]]
+    df1= s.iloc[:,[0,1,2,3,4,5]]
+    df2= v.iloc[:,[0,1,2,3,4,5]]
     df=clean_data(df)
     df1=clean_data(df1)
     df2=clean_data(df2)
@@ -70,4 +70,3 @@ def MinMaxPlot(lyst):
     plt.tight_layout()
     plt.grid(True)
     plt.show()
-   
