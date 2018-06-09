@@ -1,7 +1,6 @@
 TBASE=10
 TUPPER=20
-STATIONID=1998
-YEAR=2000
+DATA=docs/temperatures.csv
 
 
 #report: plots
@@ -10,9 +9,17 @@ YEAR=2000
 #plots: data
 	#python make_plots.py
 
-#data: prep
+
+gdd: dataaquisition
+	./gdd.py $(DATA) $(TBASE) $(TUPPER)
+
+dataaquisition: prep
+	./downloadData.py
 
 prep:
-	./gdd.py $(TBASE) $(TUPPER) $(YEAR)
+	mkdir -p docs
+	chmod 777 *.*
 
 clean:
+	rm -f docs/*.csv
+	rm -f docs/*.DS_Store
