@@ -5,7 +5,7 @@
 Remark.js is a web based slideshow with some great features that is comparable to powerpoint or google slides except you can write your presentations entirely in [markdown](http://daringfireball.net/projects/markdown/syntax).
 
 You can see a [demo of remark.js in action here](http://remarkjs.com/) and when checking it out, be sure to press ```p``` to see the incredibly useful presenter mode.
-*****
+<hr>
 ## Useful features
 
 - Presenter mode
@@ -17,7 +17,7 @@ You can see a [demo of remark.js in action here](http://remarkjs.com/) and when 
 - Can be styled with CSS
 - Is a portable, self-contained html document
 - Works offline (with some caveats - more on this later)
-*****
+<hr>
 ## Focus on your content
 
 Writing your presentation in a simple markdown document means you are freed from battling with the UI and layouts of individual slides and can **focus entirely on writing your content**.
