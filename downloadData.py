@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import urllib.request
@@ -17,8 +17,9 @@ def download(stationid, fromYear,toYear):
         data_frame2 = pd.read_csv(fname, skiprows=24, sep=",")
         data_frame1=pd.concat([data_frame2, data_frame1], join='outer')
         os.remove(fname)
-
-    result = data_frame1[['Date/Time','Year','Month','Day','Max Temp (°C)','Min Temp (°C)']]
+    columns = ['Date/Time','Year','Month','Day','Max Temp','Min Temp']
+    data_frame1 = data_frame1.reindex(columns=columns)
+    result = data_frame1[['Date/Time','Year','Month','Day','Max Temp','Min Temp']]
     result.to_csv("docs/temperatures.csv", index=False)
     return result
 
