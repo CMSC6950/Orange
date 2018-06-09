@@ -2,6 +2,7 @@
 
 import argparse
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 
@@ -25,5 +26,8 @@ for index, row in data.iterrows():
     gddtable.append(gdd)
     i += 1
 
-totalgdd = sum(gddtable)
-print(totalgdd)
+csvfile = "docs/gddvalues.csv"
+with open(csvfile, "w") as output:
+    writer = csv.writer(output, lineterminator='\n')
+    for val in gddtable:
+        writer.writerow([val])
