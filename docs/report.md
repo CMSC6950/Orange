@@ -1,11 +1,11 @@
 # Easily create slideshow presentations from markdown with remark.js
-*****
+
 ## Intro to remark.js
 
-Remark.js is a web based slideshow with some great features that is comparable to powerpoint or google slides except you can write your presentations entirely in [markdown](http://daringfireball.net/projects/markdown/syntax).
+Remark.js is a web based slideshow with some great features that is comparable to powerpoint or google slides except you can write your presentations entirely in [markdown](http://daringfireball.net/projects/markdown/syntax). 
 
 You can see a [demo of remark.js in action here](http://remarkjs.com/) and when checking it out, be sure to press ```p``` to see the incredibly useful presenter mode.
-<hr>
+
 ## Useful features
 
 - Presenter mode
@@ -17,7 +17,7 @@ You can see a [demo of remark.js in action here](http://remarkjs.com/) and when 
 - Can be styled with CSS
 - Is a portable, self-contained html document
 - Works offline (with some caveats - more on this later)
-<hr>
+
 ## Focus on your content
 
 Writing your presentation in a simple markdown document means you are freed from battling with the UI and layouts of individual slides and can **focus entirely on writing your content**.
@@ -32,26 +32,26 @@ By way of example, I wrote this post in markdown and converted it to remark.js b
 
 ## 2. Create a custom CSS theme or use an existing one
 
-Here's [an example of a basic remark.js theme](http://www.lendmeyourear.net/wp-content/uploads/remark-template-basic.css) that I created. You can use this as it is or edit it to your preference. Or you could skip this step entirely and just use the remark.js defaults which look fine.
+Here's [an example of a basic remark.js theme](http://www.lendmeyourear.net/wp-content/uploads/remark-template-basic.css) that I created. You can use this as it is or edit it to your preference. Or you could skip this step entirely and just use the remark.js defaults which look fine. 
 
 If you're using a custom CSS theme just store the CSS file somewhere handy on your computer because we'll be using it later when we convert our markdown file to a presentation.
 
 ## 3. Write your presentation in markdown.
 
-You can write your presentation naturally like you would any other document in markdown but please take into consideration how your slides will be created.
+You can write your presentation naturally like you would any other document in markdown but please take into consideration how your slides will be created. 
 
 ### Manually define new slides
 
 You can manually insert horizontal lines which denote a new slide
 
     ### First slide heading
-
+    
     First slide content
-
+    
     ---
 
     ### Second slide heading
-
+    
     Second slide content
 
 ### Use headings to denote new slides
@@ -59,15 +59,15 @@ You can manually insert horizontal lines which denote a new slide
 You can use document-mode when converting your markdown document (more on this in the next step) which splits slides based on heading structure:
 
     # First slide
-
+    
     ## Second slide
-
+    
     ### Third slide
-
+    
     Third slide content
-
+    
     ### Fourth slide
-
+    
     Fourth slide content
 
 ### Combination of lines and headings
@@ -80,9 +80,9 @@ You can also combine the two approaches for finer control. Simply use appropriat
 To write slide notes (visible in presenter mode) format your markdown like so:
 
     Slide content
-
+   
     ???
-
+    
     Slide notes
 
 
@@ -99,7 +99,7 @@ Add the -d flag for document mode
 Please note that when using document mode your headings must include a space after the markdown heading syntax otherwise it won't count as a heading and won't be converted into a new slide:
 
     ## Heading - works
-    ##Heading - does not work
+    ##Heading - does not work 
 
 ### Custom CSS theme
 
@@ -110,7 +110,7 @@ Add the -s flag to use a custom CSS theme
 
 ## 5. Open the resulting html file in your browser to see the results
 
-```p``` opens presenter mode which shows you a preview of the next slide, a timer, and any slide notes you have written.
+```p``` opens presenter mode which shows you a preview of the next slide, a timer, and any slide notes you have written. 
 
 ```c``` will clone the slideshow in a separate tab for your viewers. The cloned slideshow changes slides along with you in presenter mode.
 
@@ -124,9 +124,9 @@ There is a lot of useful markdown syntax specific to remark.js [found on their w
 Any images in your presentation that are hosted remotely will require an internet connection. you can get around this by placing any images in the same folder and referencing them locally in your markdown file e.g.
 
     ![Alt text](test.jpg) - markdown syntax
-
+    
     <img src="test.jpg"> - html syntax
-
+  
 
 ### Offline javascript
 
@@ -136,8 +136,8 @@ You need to cache the JavaScript in your browser by viewing your presentation wi
 
 To make it fully offline without depending on browser caching you can [grab the minified js](https://gnab.github.io/remark/downloads/remark-latest.min.js), store it in the same directory as your remark.js presentation and edit your presentation html document to replace
 
-    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
-
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js"></script> 
+    
 With a reference to the local file
 
     <script src="remark-latest.min.js"></script>
@@ -148,9 +148,9 @@ Here's [an example of a basic remark.js theme](http://www.lendmeyourear.net/wp-c
 
 ### Custom fonts
 
-You can use custom fonts in remark.js hosted on a remote CDN (such as google web fonts for example) or locally (stored in the same folder as the presentation perhaps)
+You can use custom fonts in remark.js hosted on a remote CDN (such as google web fonts for example) or locally (stored in the same folder as the presentation perhaps) 
 
-If you're willing to put in a bit more effort to make the theme as self contained as possible it's a good idea to convert your custom font to base64 using a service like [font squirrel](http://www.fontsquirrel.com/tools/webfont-generator).
+If you're willing to put in a bit more effort to make the theme as self contained as possible it's a good idea to convert your custom font to base64 using a service like [font squirrel](http://www.fontsquirrel.com/tools/webfont-generator). 
 
 ---
 
@@ -167,9 +167,9 @@ Then reference that font-family elsewhere in your css e.g.
 
 ### Using images in your theme
 
-One possible use for images in your theme is to display your brand logo in a corner of every slide.
+One possible use for images in your theme is to display your brand logo in a corner of every slide. 
 
-Again, I suggest base64 encoding this image to make your theme truly portable and self-contained and avoid having to store image files alongside your presentation file.
+Again, I suggest base64 encoding this image to make your theme truly portable and self-contained and avoid having to store image files alongside your presentation file. 
 
 ---
 
