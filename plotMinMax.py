@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pylab as plt
 import numpy as np
-from clean-data import clean_data
+#from clean-data import clean_data
 from downloadData import download
+from stationDict import city_to_stationID
+
 
 lyst=[]
 def MinMaxPlot(lyst):
@@ -15,9 +17,9 @@ def MinMaxPlot(lyst):
     df = f.iloc[:,[0,1,2,3,4,5]]
     df1= s.iloc[:,[0,1,2,3,4,5]]
     df2= v.iloc[:,[0,1,2,3,4,5]]
-    df=clean_data(df)
-    df1=clean_data(df1)
-    df2=clean_data(df2)
+    #df=clean_data(df)
+    #df1=clean_data(df1)
+    #df2=clean_data(df2)
     
     days=range(0,len(df))
     plt.subplots(figsize=(15,15))
@@ -69,4 +71,11 @@ def MinMaxPlot(lyst):
     plt.xticks([0,30,60,90,120,150,180,210,240,270,300,330,360])
     plt.tight_layout()
     plt.grid(True)
-    plt.show()
+    #plt.show()
+    plt.savefig('docs/MaxMinPlot.png',index=False)
+
+MinMaxPlot(["Montreal",2017,"Ottawa",2017,"Victoria",2017])
+   
+    
+
+
