@@ -26,8 +26,9 @@ for index, row in data.iterrows():
     gddtable.append(gdd)
     i += 1
 
+time = data.iloc[:,0].tolist()
+
 csvfile = "docs/gddvalues.csv"
 with open(csvfile, "w") as output:
     writer = csv.writer(output, lineterminator='\n')
-    for val in gddtable:
-        writer.writerow([val])
+    writer.writerows(zip(time, gddtable))
