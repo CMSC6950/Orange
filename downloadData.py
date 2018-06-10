@@ -5,8 +5,8 @@ import sys
 import pandas as pd
 
 def download(stationid, fromYear,toYear):
-    print("dowloading data from specified station")
-    print("Data of station id {} for year {}".format(stationid, fromYear))
+    #print("dowloading data from specified station")
+    #print("Data of station id {} for year {}".format(stationid, fromYear))
     data_frame2=[]
     data_frame1=pd.DataFrame()
     for year in range(fromYear,toYear+1):
@@ -20,7 +20,10 @@ def download(stationid, fromYear,toYear):
     #data_frame1 = data_frame1.reindex(columns=columns)
     result = data_frame1.iloc[:,[0,1,2,3,5,7]]
     #result = data_frame1[['Date/Time','Year','Month','Day','Max Temp','Min Temp']]
-    result.to_csv("docs/temperatures.csv", index=False)
+    x = str(stationid)
+    result.to_csv("docs/temperatures_"+x+".csv", index=False)
     return result
 
-download(49568, 2015, 2018)
+download(51157, 2015, 2016)
+download(49568, 2015, 2016)
+download(51337, 2015, 2016)
