@@ -1,30 +1,33 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import matplotlib.pylab as plt
 import numpy as np
-#from clean-data import clean_data
-from downloadData import download
-from stationDict import city_to_stationID
+
+ottawa = pd.read_csv("docs/temperatures_49568.csv")
+montreal = pd.read_csv("docs/temperatures_51157.csv")
+victoria = pd.read_csv("docs/temperatures_51337.csv")
 
 
 lyst=[]
 def MinMaxPlot(lyst):
-    #lyst includes 6 values - name of the city and the year for three cities 
-    f=download(city_to_stationID(lyst[0]), lyst[1],lyst[1])
-    s=download(city_to_stationID(lyst[2]), lyst[3],lyst[3])
-    v=download(city_to_stationID(lyst[4]), lyst[5],lyst[5])
-    
-    
-    df = f.iloc[:,[0,1,2,3,4,5]]
-    df1= s.iloc[:,[0,1,2,3,4,5]]
-    df2= v.iloc[:,[0,1,2,3,4,5]]
+    #lyst includes 6 values - name of the city and the year for three cities
+    #f=download(city_to_stationID(lyst[0]), lyst[1],lyst[1])
+    #s=download(city_to_stationID(lyst[2]), lyst[3],lyst[3])
+    #v=download(city_to_stationID(lyst[4]), lyst[5],lyst[5])
+
+
+    df = ottawa.iloc[:,[0,1,2,3,4,5]]
+    df1= montreal.iloc[:,[0,1,2,3,4,5]]
+    df2= victoria.iloc[:,[0,1,2,3,4,5]]
     #df=clean_data(df)
     #df1=clean_data(df1)
     #df2=clean_data(df2)
-    
+
     days=range(0,len(df))
     plt.subplots(figsize=(15,15))
-    
-    
+
+
     temp_Max = df.iloc[:,[4]]
     plt.subplot(3,1,1)
     ax2=plt.plot(days, temp_Max,label="Maximum Temp")
@@ -39,7 +42,7 @@ def MinMaxPlot(lyst):
     plt.legend(loc='upper right')
     plt.tight_layout(True)
     plt.grid(True)
-    
+
     plt.subplot(3,1,2)
     temp_Max1 = df1.iloc[:,[4]]
     temp_Min1= df1.iloc[:,[5]]
@@ -54,8 +57,8 @@ def MinMaxPlot(lyst):
     plt.title('Annual cycle of Min and Max daily temperatures of '+lyst[2]+' in '+str(lyst[3]), color="black", fontsize=18)
     plt.legend(loc='upper right')
     plt.grid(True)
-    
-    
+
+
     plt.subplot(3,1,3)
     temp_Max1 = df2.iloc[:,[4]]
     temp_Min1= df2.iloc[:,[5]]
@@ -74,8 +77,4 @@ def MinMaxPlot(lyst):
     #plt.show()
     plt.savefig('docs/MaxMinPlot.png',index=False)
 
-MinMaxPlot(["Montreal",2017,"Ottawa",2017,"Victoria",2017])
-   
-    
-
-
+MinMaxPlot(["Montreal",2016,"Ottawa",2016,"Victoria",2016])
