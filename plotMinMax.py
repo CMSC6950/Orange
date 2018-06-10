@@ -2,6 +2,7 @@
 
 import pandas as pd
 import matplotlib.pylab as plt
+plt.switch_backend('agg')
 import numpy as np
 
 ottawa = pd.read_csv("docs/temperatures_49568.csv")
