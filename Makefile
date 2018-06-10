@@ -1,6 +1,8 @@
-TBASE=10
-TUPPER=20
-DATA=docs/temperatures.csv
+TBASE=5
+TUPPER=15
+DATA_OTTAWA=docs/temperatures_49568.csv
+DATA_MONTREAL=docs/temperatures_51157.csv
+DATA_VICTORIA=docs/temperatures_51337.csv
 
 
 #report: plots
@@ -10,8 +12,13 @@ DATA=docs/temperatures.csv
 	#python make_plots.py
 
 
-gdd: dataaquisition
-	./gdd.py $(DATA) $(TBASE) $(TUPPER)
+gdd: minmaxplot
+	./gdd.py $(DATA_OTTAWA) $(TBASE) $(TUPPER)
+	./gdd.py $(DATA_MONTREAL) $(TBASE) $(TUPPER)
+	./gdd.py $(DATA_VICTORIA) $(TBASE) $(TUPPER)
+
+minmaxplot: dataaquisition
+	./plotMinMax.py
 
 dataaquisition: prep
 	./downloadData.py
@@ -23,3 +30,4 @@ prep:
 clean:
 	rm -f docs/*.csv
 	rm -f docs/*.DS_Store
+	rm -f docs/*.png
