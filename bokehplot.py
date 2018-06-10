@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-from bokeh.io import output_file, show
+from bokeh.io import output_file, save
 from bokeh.plotting import figure
 from bokeh.layouts import column
 import pandas as pd
-from datetime import datetime, timedelta
 
 ottawa = pd.read_csv("docs/gddvalues_49568.csv", header=None)
 montreal = pd.read_csv("docs/gddvalues_51157.csv", header=None)
@@ -27,4 +26,4 @@ victoriaplot.line(days, gdd_victoria, color='green')
 
 output_file('docs/bokehplot.html')
 
-show(column(ottawaplot, montrealplot, victoriaplot))
+save(column(ottawaplot, montrealplot, victoriaplot))
