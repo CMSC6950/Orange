@@ -11,6 +11,8 @@ DATA_VICTORIA=docs/temperatures_51337.csv
 #plots: data
 	#python make_plots.py
 
+bokehplot: gdd
+	./bokehplot.py
 
 gdd: minmaxplot
 	./gdd.py $(DATA_OTTAWA) $(TBASE) $(TUPPER)
@@ -31,3 +33,5 @@ clean:
 	rm -f docs/*.csv
 	rm -f docs/*.DS_Store
 	rm -f docs/*.png
+	rm -f docs/bokehplot.html
+	rm -r -f __pycache__
