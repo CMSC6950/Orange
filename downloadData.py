@@ -4,26 +4,29 @@ import urllib.request
 import sys
 import pandas as pd
 
-def download(stationid, fromYear,toYear):
-    #print("dowloading data from specified station")
-    #print("Data of station id {} for year {}".format(stationid, fromYear))
+def download(stationid,fromYear,toYear):
     data_frame2=[]
     data_frame1=pd.DataFrame()
-    for year in range(fromYear,toYear+1):
-        fname = "{}_{}_t.csv".format(stationid, year)
-        url = ("http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID="+str(stationid)+"&Year="+str(year)+"&Month=8&Day=1&timeframe=2&submit=Download+Data")
+    if int(fromYear) == int(toYear):
+        fname = "{}_{}_t.csv".format(stationid, fromYear)
+        url = ("http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID="+str(stationid)+"&Year="+str(fromYear)+"&Month=8&Day=1&timeframe=2&submit=Download+Data")
         urllib.request.urlretrieve(url, fname)
         data_frame2 = pd.read_csv(fname, skiprows=24, sep=",")
         data_frame1=pd.concat([data_frame2, data_frame1], join='outer')
         os.remove(fname)
-    #columns = ['Date/Time','Year','Month','Day','Max Temp','Min Temp']
-    #data_frame1 = data_frame1.reindex(columns=columns)
+    else:
+        for year in range(fromYear,toYear+1):
+            fname = "{}_{}_t.csv".format(stationid, year)
+            url = ("http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID="+str(stationid)+"&Year="+str(year)+"&Month=8&Day=1&timeframe=2&submit=Download+Data")
+            urllib.request.urlretrieve(url, fname)
+            data_frame2 = pd.read_csv(fname, skiprows=24, sep=",")
+            data_frame1=pd.concat([data_frame2, data_frame1], join='outer')
+            os.remove(fname)
     result = data_frame1.iloc[:,[0,1,2,3,5,7]]
-    #result = data_frame1[['Date/Time','Year','Month','Day','Max Temp','Min Temp']]
     x = str(stationid)
     result.to_csv("docs/temperatures_"+x+".csv", index=False)
     return result
 
-download(51157, 2015, 2016)
-download(49568, 2015, 2016)
-download(51337, 2015, 2016)
+download(51157, 2016, 2016)
+download(49568, 2016, 2016)
+download(51337, 2016, 2016)
