@@ -1,0 +1,86 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{epstopdf}
+\usepackage{float}
+\epstopdfsetup{outdir=./}
+
+\title{Growing Degree Days}
+\author{\bf{CMSC6950 Project}\\\\Hanieh Marvikhorasani\\ Mahesh Kumar Reddy Pochamreddy\\ Jonathan Conway}
+\date{\today}
+
+\begin{document}
+
+
+	\clearpage\maketitle
+	\thispagestyle{empty}
+
+\newpage
+
+\section{ \bf Introduction}
+The growing degree days (GDD) is a temperature index tool used in agriculture to predict the best planting season for a plant. GDD enhances predicting the best planting time of a crop to its maturity, in terms of high heat accumulated in the ground in regions conducive. GDD is used to predict and compare the growing rate of a plant from germination to yielding and predict future planting.
+Mathematically, GDD is calculated using the following equation:
+
+
+\begin{equation}
+\textrm{GDD} = \left(\frac{T_{max} + T_{min}}{2}\right) - T_{base}
+\label{eqn:gdd}
+\end{equation}
+
+\noindent 
+Generally, GDD is calculated by adding the maximum (Tmax) and minimum (Tmin) temperature together dividing by two (2) and then subtracting the base temperature (Tbase). 
+When determining the GDD of a plant, each plant has a conducive temperature for development and so it has a base temperature (Tbase). The base temperature is the lowest temperature a plant can survive in. (Tbase) will be considered 5 $^{\circ}$C for the calculation of GDD in this report.
+The reference temperature for a given plant is the temperature below which its development slows or stops. For example, peas are planted during the cold season, where it has a reference temperature of 40  $^{\circ}$F while sweet corn and soybeans are planted during the hot season, where they have a reference temperature of 50 degrees  $^{\circ}$F.
+In this report, detailed results of GDD calculations will be presented. The GDD calculations were done for three main cities of Canada in 2016 including Victoria, Ottawa, and Montreal.
+
+
+
+\section{ \bf Methodology}
+\subsection{Data Collection}
+Required data for three cities( Montreal, Victoria, Ottawa) have been obtained from the given website: htts://climate.weather.gc.ca. Also required columns including year, Min Temp, Max Temp and etc have been extracted for the selected cities and this data have been used to create the plots for defined tasks. 
+
+
+\subsection{ \bf Minimum Core Tasks}
+
+\begin{enumerate}
+\item  Downloading the data from the defined url by a specific function automatically based on the city names and station IDs
+\item  Showing annual cycle of min/max daily temperatures for selected Canadian cities(Fig. \ref{min-max})
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.25in]{MaxMinPlot.png}
+
+\caption{Min/Max temps for Montreal, Ottawa and Victoria in 2016}
+\label{min-max}
+\end{figure}
+\end{center}
+
+\item Calculating and storing GDD to analyze via the command line.
+\item  Presenting accumulated GDD based on time for all the chosen cities by plot
+
+
+\end{enumerate}
+
+
+\subsection{ \bf Secondary Tasks }
+\begin{enumerate}
+\item Bokeh plots to address GDD for the  chosen cities
+
+\item Producing  a map to show effective GDD over  all the Canada
+\item Compare GDD year-over-year
+
+\subsection {\bf Final Task} 
+
+
+\end{enumerate}
+
+\section{Conclusion}
+
+ 
+\end{document}
