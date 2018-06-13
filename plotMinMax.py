@@ -6,33 +6,16 @@ plt.switch_backend('agg')
 import numpy as np
 import sys
 
-
-if len(sys.argv) > 1:
-    plotname = sys.argv[1]
-else:
-    plotname = 'docs/MinMaxPlot.png'
-
-print(plotname)
-
-ottawa = pd.read_csv("docs/temperatures_49568.csv")
-montreal = pd.read_csv("docs/temperatures_51157.csv")
-victoria = pd.read_csv("docs/temperatures_51337.csv")
+ottawa = pd.read_csv("data/temperatures_49568.csv")
+montreal = pd.read_csv("data/temperatures_51157.csv")
+victoria = pd.read_csv("data/temperatures_51337.csv")
 
 
 lyst=[]
 def MinMaxPlot(lyst):
-    #lyst includes 6 values - name of the city and the year for three cities
-    #f=download(city_to_stationID(lyst[0]), lyst[1],lyst[1])
-    #s=download(city_to_stationID(lyst[2]), lyst[3],lyst[3])
-    #v=download(city_to_stationID(lyst[4]), lyst[5],lyst[5])
-
-
     df = ottawa.iloc[:,[0,1,2,3,4,5]]
     df1= montreal.iloc[:,[0,1,2,3,4,5]]
     df2= victoria.iloc[:,[0,1,2,3,4,5]]
-    #df=clean_data(df)
-    #df1=clean_data(df1)
-    #df2=clean_data(df2)
 
     days=range(0,len(df))
     plt.subplots(figsize=(15,15))
@@ -85,6 +68,6 @@ def MinMaxPlot(lyst):
     plt.tight_layout()
     plt.grid(True)
     #plt.show()
-    plt.savefig(plotname,index=False)
+    plt.savefig('data/MinMaxPlot.png',index=False)
 
 MinMaxPlot(["Montreal",2016,"Ottawa",2016,"Victoria",2016])

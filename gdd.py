@@ -31,7 +31,7 @@ for index, row in data.iterrows():
 
 time = data.iloc[:,0].tolist()
 
-csvfile = "docs/gddvalues_"+stationid+".csv"
+csvfile = "data/gddvalues_"+stationid+".csv"
 with open(csvfile, "w") as output:
     writer = csv.writer(output, lineterminator='\n')
     writer.writerows(zip(time, gddtable))
