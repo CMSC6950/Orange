@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import matplotlib.pylab as plt
+plt.switch_backend('agg')
+import csv
+import itertools
 
-#year1 = swift_current_gdd.iloc[:365][1]
-#year2 = swift_current_gdd.iloc[365:731][1]
-#year3 = swift_current_gdd.iloc[731:1096][1]
-#year4 = swift_current_gdd.iloc[1096:1461][1]
-#year5 = swift_current_gdd.iloc[1461:1826][1]
-#year6 = swift_current_gdd.iloc[1826:2192][1]
-#year7 = swift_current_gdd.iloc[2192:2557][1]
-#year8 = swift_current_gdd.iloc[2557:2922][1]
-#year9 = swift_current_gdd.iloc[2922:3287][1]
-#year10 = swift_current_gdd.iloc[3287:][1]
-
-fnames = ['docs/gddvalues_6743.csv','docs/gddvalues_6633.csv']
+fnames = ['data/gddvalues_6599.csv','data/gddvalues_6610.csv','data/gddvalues_6633.csv','data/gddvalues_6688.csv','data/gddvalues_6720.csv','data/gddvalues_6743.csv']
+placenames = ['Charleston', 'Corner Brook', 'Gander', 'Plum Point', 'St. John\'s', 'Swift Current']
 
 gdd_yearly_sum_all_locations = []
 for j in fnames:
@@ -34,4 +28,7 @@ for j in fnames:
             i =+ 1
     sum_total_place = (sum(gdd_yearly_sum))/10
     gdd_yearly_sum_all_locations.append(sum_total_place)
-print(gdd_yearly_sum_all_locations)
+csvfile = "data/nlinfo.csv"
+with open(csvfile, "w") as output:
+    writer = csv.writer(output, lineterminator='\n')
+    writer.writerows(zip(placenames, gdd_yearly_sum_all_locations))
