@@ -1,62 +1,127 @@
 TBASE=0
 TUPPER=55
 
-DATA_LONG_MONTREAL=docs/temperatures_5415.csv
+TEMPERATURE_LONG_MONTREAL=data/temperatures_5415.csv
+GDD_LONG_MONTREAL=data/gddvalues_5415.csv
+MONTREAL_REGRESSION=data/LinReg.png
 
-DATA_OTTAWA=docs/temperatures_49568.csv
-DATA_MONTREAL=docs/temperatures_51157.csv
-DATA_VICTORIA=docs/temperatures_51337.csv
-ONE_YEAR = $(DATA_OTTAWA) $(DATA_MONTREAL) $(DATA_VICTORIA)
+TEMPERATURE_OTTAWA=data/temperatures_49568.csv
+TEMPERATURE_MONTREAL=data/temperatures_51157.csv
+TEMPERATURE_VICTORIA=data/temperatures_51337.csv
+TEMPERATURE_ONE_YEAR = $(TEMPERATURE_OTTAWA) $(TEMPERATURE_MONTREAL) $(TEMPERATURE_VICTORIA)
 
-DATA_STJOHNS=docs/temperatures_6720.csv
-DATA_CHARLESTON=docs/temperatures_6599.csv
-DATA_GANDER=docs/temperatures_6633.csv
-DATA_CORNER_BROOK=docs/temperatures_6610.csv
-DATA_SWIFT_CURRENT=docs/temperatures_6743.csv
-DATA_PLUM_POINT=docs/temperatures_6688.csv
-TEN_YEAR = $(DATA_STJOHNS) $(DATA_CHARLESTON)
-DATA_FILES=$(ONE_YEAR) $(TEN_YEAR) $(DATA_LONG_MONTREAL)
+GDD_OTTAWA=data/gddvalues_49568.csv
+GDD_MONTREAL=data/gddvalues_51157.csv
+GDD_VICTORIA=data/gddvalues_51337.csv
+GDD_ONE_YEAR= $(GDD_OTTAWA) $(GDD_MONTREAL) $(GDD_VICTORIA)
 
-# Idea for the future...
-#GDD_FILES = $(prefix $(DATA_FILES),gddvalues_)
+TEMPERATURE_STJOHNS=data/temperatures_6720.csv
+TEMPERATURE_CHARLESTON=data/temperatures_6599.csv
+TEMPERATURE_GANDER=data/temperatures_6633.csv
+TEMPERATURE_CORNER_BROOK=data/temperatures_6610.csv
+TEMPERATURE_SWIFT_CURRENT=data/temperatures_6743.csv
+TEMPERATURE_PLUM_POINT=data/temperatures_6688.csv
+TEMPERATURE_TEN_YEAR = $(TEMPERATURE_STJOHNS) $(TEMPERATURE_CHARLESTON) $(TEMPERATURE_GANDER) $(TEMPERATURE_CORNER_BROOK) $(TEMPERATURE_SWIFT_CURRENT) $(TEMPERATURE_PLUM_POINT)
 
-DATA=docs/nlinfo.csv
-PLOTS=docs/MaxMinPlot.png,
+GDD_STJOHNS=data/gddvalues_6720.csv
+GDD_CHARLESTON=data/gddvalues_6599.csv
+GDD_GANDER=data/gddvalues_6633.csv
+GDD_CORNER_BROOK=data/gddvalues_6610.csv
+GDD_SWIFT_CURRENT=data/gddvalues_6743.csv
+GDD_PLUM_POINT=data/gddvalues_6688.csv
+GDD_TEN_YEAR= $(GDD_STJOHNS) $(GDD_CHARLESTON) $(GDD_GANDER) $(GDD_CORNER_BROOK) $(GDD_PLUM_POINT) $(GDD_SWIFT_CURRENT)
 
-ALL: $(PLOTS) $(DATA_LONG_MONTREAL) $(DATA)
+NLINFO=data/nlinfo.csv
 
-#report: $(PLOTS)
-	#pdflatex report.tex
+NLWHEAT=data/nlwheatplot.png
+NLSEED=data/nlseedplot.png
+MAXMINPLOTS=data/MinMaxPlot.png
+BOKEHPLOT=data/bokehplot.html
 
-#plots: data
-	#python make_plots.py
+ALL: $(MAXMINPLOTS) $(NLSEED) $(BOKEHPLOT) $(NLWHEAT) $(MONTREAL_REGRESSION)
 
-#bokehplot: gdd
-#	./bokehplot.py
+$(MONTREAL_REGRESSION): $(GDD_LONG_MONTREAL)
+	./linearReg.py
 
-$(DATA): docs/gddvalues_%.csv
+$(GDD_LONG_MONTREAL): $(TEMPERATURE_LONG_MONTREAL)
+	./gdd.py $(TEMPERATURE_LONG_MONTREAL) $(TBASE) $(TUPPER)
+
+$(TEMPERATURE_LONG_MONTREAL):
+	./downloadData.py 5415 1950 2010
+
+$(GDD_STJOHNS): $(TEMPERATURE_STJOHNS)
+	./gdd.py $(TEMPERATURE_STJOHNS) $(TBASE) $(TUPPER)
+
+$(GDD_CHARLESTON): $(TEMPERATURE_CHARLESTON)
+	./gdd.py $(TEMPERATURE_CHARLESTON) $(TBASE) $(TUPPER)
+
+$(GDD_GANDER): $(TEMPERATURE_GANDER)
+	./gdd.py $(TEMPERATURE_GANDER) $(TBASE) $(TUPPER)
+
+$(GDD_CORNER_BROOK): $(TEMPERATURE_CORNER_BROOK)
+	./gdd.py $(TEMPERATURE_CORNER_BROOK) $(TBASE) $(TUPPER)
+
+$(GDD_SWIFT_CURRENT): $(TEMPERATURE_SWIFT_CURRENT)
+	./gdd.py $(TEMPERATURE_SWIFT_CURRENT) $(TBASE) $(TUPPER)
+
+$(GDD_PLUM_POINT): $(TEMPERATURE_PLUM_POINT)
+	./gdd.py $(TEMPERATURE_PLUM_POINT) $(TBASE) $(TUPPER)
+
+$(TEMPERATURE_CORNER_BROOK):
+	./downloadData.py 6610 1995 2004
+
+$(TEMPERATURE_SWIFT_CURRENT):
+	./downloadData.py 6743 1995 2004
+
+$(TEMPERATURE_PLUM_POINT):
+	./downloadData.py 6688 1995 2004
+
+$(TEMPERATURE_STJOHNS):
+	./downloadData.py 6720 1995 2004
+
+$(TEMPERATURE_CHARLESTON):
+	./downloadData.py 6599 1995 2004
+
+$(TEMPERATURE_GANDER):
+	./downloadData.py 6633 1995 2004
+
+$(GDD_VICTORIA): $(TEMPERATURE_VICTORIA)
+	./gdd.py $(TEMPERATURE_VICTORIA) $(TBASE) $(TUPPER)
+
+$(GDD_MONTREAL): $(TEMPERATURE_MONTREAL)
+	./gdd.py $(TEMPERATURE_MONTREAL) $(TBASE) $(TUPPER)
+
+$(GDD_OTTAWA): $(TEMPERATURE_OTTAWA)
+	./gdd.py $(TEMPERATURE_OTTAWA) $(TBASE) $(TUPPER)
+
+$(BOKEHPLOT): $(GDD_ONE_YEAR)
+	./bokehplot.py
+
+$(NLSEED): $(NLINFO)
+	./nlseedplot.py
+
+$(NLWHEAT): $(NLINFO)
+	./nlwheatplot.py
+
+$(NLINFO): $(GDD_TEN_YEAR)
 	./nlgrain.py
 
-docs/gddvalues_%.csv: docs/temperatures_%.csv
-	./gdd_py $^ $(TBASE) $(TUPPER)
+$(MAXMINPLOTS): $(TEMPERATURE_ONE_YEAR)
+	./plotMinMax.py
 
-$(PLOTS): $(ONE_YEAR)
-	./plotMinMax.py $@
+$(TEMPERATURE_VICTORIA):
+	./downloadData.py 51337 2016 2016
 
-$(DATA_LONG_MONTREAL):
-	python ./downloadData.py 5415 1950 2010
+$(TEMPERATURE_MONTREAL):
+	./downloadData.py 51157 2016 2016
 
-docs/temperatures_%.csv:
-	python ./downloadData.py $* \
-		$(if $(findstring $@,$(TEN_YEAR)),2016,2016) \
-		$(if $(findstring $@,$(ONE_YEAR)),2015,2016) \
+$(TEMPERATURE_OTTAWA):
+	./downloadData.py 49568 2016 2016
 
 prep:
 	chmod 755 *.*
 
 clean:
-	rm -f docs/*.csv
-	rm -f docs/*.DS_Store
-	rm -f docs/*.png
-	rm -f docs/bokehplot.html
+	rm -r data
+	mkdir -p data
 	rm -r -f __pycache__
