@@ -28,6 +28,7 @@ def download(stationid,fromYear,toYear):
         os.remove(fname)
     else:
         for year in range(fromYear,toYear+1):
+            print(year)
             fname = "{}_{}_t.csv".format(stationid, year)
             url = ("http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID="+str(stationid)+"&Year="+str(year)+"&Month=8&Day=1&timeframe=2&submit=Download+Data")
             urllib.request.urlretrieve(url, fname)
@@ -39,14 +40,9 @@ def download(stationid,fromYear,toYear):
     result.to_csv("docs/temperatures_"+x+".csv", index=False)
     return result
 
-download(51157, 2016, 2016)
-download(49568, 2016, 2016)
-download(51337, 2016, 2016)
-download(6720, 1996, 2005)
-download(6599, 1996, 2005)
-download(6633, 1996, 2005)
-download(6610, 1996, 2005)
-download(6743, 1996, 2005)
-download(6688, 1996, 2005)
-#dowloading data from 1950 to 2010 for Montreal
-download(5415, 1950, 2010)
+if __name__=="__main__":
+    stationId = int(sys.argv[1])
+    startYear = int(sys.argv[2])
+    endYear = int(sys.argv[3])
+
+    download(stationId, startYear, endYear)

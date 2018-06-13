@@ -4,6 +4,15 @@ import pandas as pd
 import matplotlib.pylab as plt
 plt.switch_backend('agg')
 import numpy as np
+import sys
+
+
+if len(sys.argv) > 1:
+    plotname = sys.argv[1]
+else:
+    plotname = 'docs/MinMaxPlot.png'
+
+print(plotname)
 
 ottawa = pd.read_csv("docs/temperatures_49568.csv")
 montreal = pd.read_csv("docs/temperatures_51157.csv")
@@ -76,6 +85,6 @@ def MinMaxPlot(lyst):
     plt.tight_layout()
     plt.grid(True)
     #plt.show()
-    plt.savefig('docs/MaxMinPlot.png',index=False)
+    plt.savefig(plotname,index=False)
 
 MinMaxPlot(["Montreal",2016,"Ottawa",2016,"Victoria",2016])
