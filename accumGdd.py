@@ -25,7 +25,6 @@ for csv in allCsvFiles:
     avgGdd.append(cumdata2[len(cumdata2)-1])
     x = np.linspace(1,12,len(cumdata2),endpoint=True)
     ax.plot(x,cumdata2,label =y,linewidth = 2)
-print(avgGdd)
 plt.legend(loc='lower right')
 plt.title("St.johns-2017-Growing Degree days comparision(>50°F)")
 plt.annotate("Cumulative Growing degree days\n"
