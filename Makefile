@@ -1,8 +1,6 @@
 TBASE=0
 TUPPER=55
 
-#dowloading data from 1950 to 2010 for Montreal
-#download(5415, 1950, 2010)
 DATA_LONG_MONTREAL=docs/temperatures_5415.csv
 
 DATA_OTTAWA=docs/temperatures_49568.csv
@@ -22,9 +20,10 @@ DATA_FILES=$(ONE_YEAR) $(TEN_YEAR) $(DATA_LONG_MONTREAL)
 # Idea for the future...
 #GDD_FILES = $(prefix $(DATA_FILES),gddvalues_)
 
-PLOTS=docs/MaxMinPlot.png
+DATA=docs/nlinfo.csv
+PLOTS=docs/MaxMinPlot.png,
 
-ALL: $(PLOTS) $(DATA_LONG_MONTREAL)
+ALL: $(PLOTS) $(DATA_LONG_MONTREAL) $(DATA)
 
 #report: $(PLOTS)
 	#pdflatex report.tex
@@ -32,36 +31,28 @@ ALL: $(PLOTS) $(DATA_LONG_MONTREAL)
 #plots: data
 	#python make_plots.py
 
-bokehplot: gdd
-	./bokehplot.py
+#bokehplot: gdd
+#	./bokehplot.py
+
+$(DATA): docs/gddvalues_%.csv
+	./nlgrain.py
 
 docs/gddvalues_%.csv: docs/temperatures_%.csv
 	./gdd_py $^ $(TBASE) $(TUPPER)
 
-gdd: $(ONE_YEAR) $(TEN_YEAR)
-	./gdd.py $(DATA_OTTAWA) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_MONTREAL) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_VICTORIA) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_STJOHNS) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_CHARLESTON) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_GANDER) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_CORNER_BROOK) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_SWIFT_CURRENT) $(TBASE) $(TUPPER)
-	./gdd.py $(DATA_PLUM_POINT) $(TBASE) $(TUPPER)
-
-docs/MaxMinPlot.png: $(ONE_YEAR)
+$(PLOTS): $(ONE_YEAR)
 	./plotMinMax.py $@
 
 $(DATA_LONG_MONTREAL):
 	python ./downloadData.py 5415 1950 2010
 
 docs/temperatures_%.csv:
-	python ./downloadData.py $*  \
-		$(if $(findstring $@,$(TEN_YEAR)),1996,2016)  \
-		$(if $(findstring $@,$(TEN_YEAR)),2005,2016)  \
+	python ./downloadData.py $* \
+		$(if $(findstring $@,$(TEN_YEAR)),2016,2016) \
+		$(if $(findstring $@,$(ONE_YEAR)),2015,2016) \
 
 prep:
-	chmod 777 *.*
+	chmod 755 *.*
 
 clean:
 	rm -f docs/*.csv
