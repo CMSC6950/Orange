@@ -4,6 +4,18 @@ import urllib.request
 import sys
 import pandas as pd
 
+""" Script for downloading data
+    this function downloads and then save csv files that have the required columns for our further calculations and plots.
+    
+Args:
+	stationid (int):  this parameter is for the station id of a specific city
+	fromYear (int):	  this parameter is for specifying the start year for retrieving the data
+	toYear (int) :  this parameter is for specifying the end year for retrieving the data
+	
+Return:
+	string: return a csv file including requested data
+"""
+
 def download(stationid,fromYear,toYear):
     data_frame2=[]
     data_frame1=pd.DataFrame()
@@ -36,3 +48,5 @@ download(6633, 1996, 2005)
 download(6610, 1996, 2005)
 download(6743, 1996, 2005)
 download(6688, 1996, 2005)
+#dowloading data from 1950 to 2010 for Montreal
+download(5415, 1950, 2010)
