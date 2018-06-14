@@ -92,3 +92,9 @@ def accGddPlotMain(stationId1,stationId2,stationId3) :
     accGddPlot(stationId2)
     accGddPlot(stationId3)
     
+if __name__=="__main__":
+    stationId1 = int(sys.argv[1])
+    stationId2 = int(sys.argv[2])
+    stationId3 = int(sys.argv[3])
+
+    accGddPlotMain(stationId1, stationId2, stationId3)
