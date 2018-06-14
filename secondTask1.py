@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ''' This is Secondory Task 1:'''
 import glob
 import matplotlib.pyplot as plt
