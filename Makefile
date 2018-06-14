@@ -11,6 +11,8 @@ ACCUMGDD_1=data/3932accGdd.png
 #ACCUMGDD_2=data/49568accGdd.png
 #ACCUMGDD_3=data/50430accGdd.png
 
+$SECONDTASK=data/SecondTask1.png
+
 PREP=data
 
 TEMPERATURE_LONG_MONTREAL=data/temperatures_5415.csv
@@ -50,7 +52,7 @@ NLSEED=data/nlseedplot.png
 MAXMINPLOTS=data/MinMaxPlot.png
 BOKEHPLOT=data/bokehplot.html
 
-ALL: $(PREP) $(MAXMINPLOTS) $(NLSEED) $(BOKEHPLOT) $(NLWHEAT) $(MONTREAL_REGRESSION) $(ACCUMGDD_1) #$(ACCUMGDD_2) $(ACCUMGDD_3)
+ALL: $(PREP) $(MAXMINPLOTS) $(NLSEED) $(BOKEHPLOT) $(NLWHEAT) $(MONTREAL_REGRESSION) $(SECONDTASK) $(ACCUMGDD_1) #$(ACCUMGDD_2) $(ACCUMGDD_3)
 
 $(MONTREAL_REGRESSION): $(GDD_LONG_MONTREAL)
 	./linearReg.py
@@ -106,11 +108,14 @@ $(GDD_CORE_1): $(TEMPERATURE_CORE_1)
 $(ACCUMGDD_1): $(GDD_CORE_1)
 	./accumGdd.py 3932
 
+$(SECONDTASK): $(GDD_CORE_1)
+	./secondTask1.py 3932
+
 #$(ACCUMGDD_2): $(GDD_CORE_2)
 #	./accumGdd.py 49568
 
-$(ACCUMGDD_3): $(GDD_CORE_3)
-	./accumGdd.py 50430
+#$(ACCUMGDD_3): $(GDD_CORE_3)
+#	./accumGdd.py 50430
 
 $(TEMPERATURE_CORE_1):
 	./downloadData.py 3932 1981 2016
