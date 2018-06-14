@@ -75,5 +75,6 @@ def accGddPlot(stationId) :
                 ,(0.25, 0.8),
                  xycoords="axes fraction", va="center", ha="center",
                  bbox=dict(boxstyle="square, pad=1", fc="w"))
-        plt.xticks(np.arange(12),('1-Jan', '1-Feb', '1-Mar', '1-Apr', '1-May', '1-Jun', '1-Jul', '1-Aug', '1-Sep', '1-Oct', '1-Nov', '1-Dec'))
-        plt.savefig('data/accGdd.png',index=False) 
+        plt.xticks(np.arange(12),('1-Jan', '1-Feb', '1-Mar', '1-Apr', '1-May', '1-Jun', '1-Jul', '1-Aug', '1-Sep', '1-Oct', '1-Nov', '1-Dec')) 
+        filename=str(stationId)+'accGdd.png'
+        plt.savefig('data/'+filename,index=False) 
