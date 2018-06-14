@@ -26,15 +26,33 @@ The reference temperature for a given plant is the temperature below which its d
 In this report, detailed results of GDD calculations will be presented. The GDD calculations were done for three main cities of Canada in 2016 including Victoria, Ottawa, and Montreal.
 ---
 
-# The Data
+# Methodology
+## Data Collection
+
+Required  data  for  different  cities  have  been  obtained  from  the  given  website:
+htts://climate.weather.gc.ca.  Also needed columns including year, Min Temp,
+Max  Temp  and  etc  have  been  extracted  for  the  selected  cities  and  this  data
+have  been  used  to  create  the  plots  for  defined  tasks.   
+
+The main data selected was the monthly data for 2016 from stations located in Montreal, Victoria, and Ottawa. This data was used to complete the required Minimum Core Tasks.
+
+For the regression analysis performed for the Secondary Tasks, data from 1950 to 2010 was selected from a weather station in Montreal.
+
+Data was also selected from unique stations on the island on the Newfoundland based on the 6 different geographic regions. This data spans 10 years and covers the years 1995-2004. This data was used to compile the necessary files for the Final Task analysis which will be elaborated further in this presentation.  
 
 ---
 
-# The Min/Max Plots
+## Minimum Core Tasks
 
+1. Downloading the data from the defined url by specific function (”down-
+load”) automatically based on station ID, start year and end year.  For
+example dowload(5415,1960,2010), downloads weather data for the station 5415 (located in Montreal)
+from 1960 to 2010.
 ---
 
-# The GDD Calculation
+2. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
+
+![MinMaxPlot](data/MinMaxPlot.png)
 
 ---
 
