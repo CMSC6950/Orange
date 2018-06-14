@@ -29,9 +29,7 @@ have  been  used  to  create  the  plots  for  defined  tasks.
 ---
 ###1. Data Collection continued
 
-The main data selected was the monthly data for 2016 from stations located in Montreal, Victoria, and Ottawa. This data was used to complete the required Minimum Core Tasks.
-
-For the regression analysis performed for the Secondary Tasks, data from 1950 to 2010 was selected from a weather station in Montreal.
+The main data selected was the monthly data for 2016 from stations located in Montreal, Victoria, and Ottawa. This data was used to complete the required Minimum Core Tasks. For the regression analysis performed for the Secondary Tasks, data from 1950 to 2010 was selected from a weather station in Montreal.
 
 .center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/Canada_final.jpg">]
 
