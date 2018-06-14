@@ -48,7 +48,7 @@ Data was also selected from unique stations on the island on the Newfoundland ba
 
 1. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
 
-.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png" width=400x400]
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png"]
 
 ---
 
@@ -64,4 +64,4 @@ Data was also selected from unique stations on the island on the Newfoundland ba
 
 2.
 
-[This link](./data/bokehplot.html)
+[This link](http://www.cs.mun.ca/~charlesc/cmsc6950/bokehplot.html)
