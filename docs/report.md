@@ -20,6 +20,8 @@ textrm{GDD} = \left(\frac{T_{max} + T_{min}}{2}\right) - T_{base}
 label{eqn:gdd}
 end{equation}
 
+---
+
 Generally, GDD is calculated by adding the maximum (Tmax) and minimum (Tmin) temperature together dividing by two (2) and then subtracting the base temperature (Tbase).
 When determining the GDD of a plant, each plant has a conducive temperature for development and so it has a base temperature (Tbase). The base temperature is the lowest temperature a plant can survive in. (Tbase) will be considered 5 $^{\circ}$C for the calculation of GDD in this report.
 The reference temperature for a given plant is the temperature below which its development slows or stops. For example, peas are planted during the cold season, where it has a reference temperature of 40  $^{\circ}$F while sweet corn and soybeans are planted during the hot season, where they have a reference temperature of 50 degrees  $^{\circ}$F.
@@ -42,26 +44,24 @@ Data was also selected from unique stations on the island on the Newfoundland ba
 
 ---
 
-## Minimum Core Tasks
+## Scientific Results for Minimum Core Tasks
 
-1. Downloading the data from the defined url by specific function (”down-
-load”) automatically based on station ID, start year and end year.  For
-example dowload(5415,1960,2010), downloads weather data for the station 5415 (located in Montreal)
-from 1960 to 2010.
----
-
-2. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
+1. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
 
 .center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png" width=400x400]
 
 ---
 
-# The Accumulated GDD vs Time Plots
+2. Showing accumulated GDD vs time for some selected cities
 
 ---
 
-# The GitHub Repo
+## Scientific Results for Secondary Tasks
+
+1. Create a plot showing GDD
 
 ---
 
-# The LaTeX Report
+2.
+
+[This link](./data/bokehplot.html)
