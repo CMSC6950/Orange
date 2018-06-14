@@ -46,13 +46,19 @@ Data was also selected from unique stations on the island on the Newfoundland ba
 
 ## Scientific Results for Minimum Core Tasks
 
-1. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
+1. For our Core Tasks, we chose data from Montreal, Ottawa, and Victoria for the year 2016
 
- .center[<img src="http://www.almanac.com/sites/new.almanac.com/files/images/corn-field-440338_1280.jpg">]
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/Canada_final.jpg">]
 
 ---
 
-2. Showing accumulated GDD vs time for some selected cities
+2. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png">]
+
+---
+
+3. Showing accumulated GDD vs time for some selected cities
 
 ---
 
@@ -62,6 +68,42 @@ Data was also selected from unique stations on the island on the Newfoundland ba
 
 ---
 
-2.
+2. Standalone Bokeh Plots
 
-[This link](http://www.cs.mun.ca/~charlesc/cmsc6950/bokehplot.html)
+[Click Here for Bokeh Plots](http://www.cs.mun.ca/~charlesc/cmsc6950/bokehplot.html)
+
+---
+
+3. Liner Regression
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/LinReg.png">]
+
+---
+
+# The Final Tasks
+
+The island of Newfoundland was divided into 6 geographic regions; North, South, East, West, Central, and The Avalon
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/Island_of_Newfoundland_Regions_final.jpg">]
+
+---
+
+A station from each region was selected: Plum Point (North), Swift Current (South), Charleston (East), Corner Brook (West), Gander (Central), St. John's (The Avalon)
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/Island_of_Newfoundland_final.jpg">]
+
+---
+
+The 10 Year Average Annual GDD was calculated and compared to the minimum GDD for 3 types of wheat. From the analysis, based solely on GDD, parts of Newfoundland could sustain wheat production.
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/nlwheatplot.png">]
+
+Minimum GDD for wheat production was found [here](http://store.msuextension.org/publications/agandnaturalresources/mt200103ag.pdf)
+
+---
+
+Using the 10 Year Average Annual GDD calculation again, the results were compared to the minimum GDD for 6 types of seeds. From the analysis, based solely on GDD, parts of Newfoundland could sustain wheat production.
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/nlseedplot.png">]
+
+Minimum GDD for seed production was found [here](http://store.msuextension.org/publications/agandnaturalresources/mt200103ag.pdf)
