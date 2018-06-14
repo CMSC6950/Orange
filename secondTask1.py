@@ -5,6 +5,7 @@ import glob
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import sys
 
 """ Script for calculating accumulated Gdd
     this function downloads and then save Average Gdd's over period of time
