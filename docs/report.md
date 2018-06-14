@@ -15,6 +15,7 @@ Jonathan Conway
 The growing degree days (GDD) is a temperature index tool used in agriculture to predict the best planting season for a plant. GDD enhances predicting the best planting time of a crop to its maturity, in terms of high heat accumulated in the ground in regions conducive. GDD is used to predict and compare the growing rate of a plant from germination to yielding and predict future planting. Generally, GDD is calculated by adding the maximum (Tmax) and minimum (Tmin) temperature together dividing by two (2) and then subtracting the base temperature (Tbase).
 
 When determining the GDD of a plant, each plant has a conducive temperature for development and so it has a base temperature (Tbase). The base temperature is the lowest temperature a plant can survive in. (Tbase) will be considered 0 degrees celcius for the calculation of GDD in this report.
+
 The reference temperature for a given plant is the temperature below which its development slows or stops. For example, peas are planted during the cold season, where it has a reference temperature of 40 degrees fahrenheit while sweet corn and soybeans are planted during the hot season, where they have a reference temperature of 50 degrees fahrenheit.
 ---
 
@@ -22,7 +23,7 @@ The reference temperature for a given plant is the temperature below which its d
 ## Data Collection
 
 Required  data  for  different  cities  have  been  obtained  from  the  given  website:
-htts://climate.weather.gc.ca.  Also needed columns including year, Min Temp,
+https://climate.weather.gc.ca.  Also needed columns including year, Min Temp,
 Max  Temp  and  etc  have  been  extracted  for  the  selected  cities  and  this  data
 have  been  used  to  create  the  plots  for  defined  tasks.   
 
