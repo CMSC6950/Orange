@@ -3,6 +3,7 @@
 ''' This is Secondory Task 1:'''
 import glob
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 import numpy as np
 import pandas as pd
 import sys
