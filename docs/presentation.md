@@ -55,6 +55,8 @@ The first part of this task was importing the argsparse library which allowed fo
 
 ##4. Showing accumulated GDD vs time for some selected cities
 
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/image_456.png">]
+
 ---
 
 ##5. Using Git for version control and GitHub for collaboration
@@ -95,6 +97,8 @@ The License chose for this project was the MIT License with the help of [https:/
 
 #Secondary tasks
 ##1. Create a plot showing GDD
+
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/image_123.png">]
 
 ---
 
