@@ -28,7 +28,7 @@ def download(stationid,fromYear,toYear):
         os.remove(fname)
     else:
         for year in range(fromYear,toYear+1):
-            print(year)
+            print("Getting Data for", year)
             fname = "{}_{}_t.csv".format(stationid, year)
             url = ("http://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID="+str(stationid)+"&Year="+str(year)+"&Month=8&Day=1&timeframe=2&submit=Download+Data")
             urllib.request.urlretrieve(url, fname)
