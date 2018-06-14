@@ -6,6 +6,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+""" Script for calculating accumulated Gdd
+    this function downloads and then save Average Gdd's over period of time
+Args:
+    stationid (int):  this parameter is for the station id of a specific city
+"""
+
 def gddPlot(stationId) :
     ''' This Function calculates mean gdd temperatures of every day over given period of time for particular station Id.
     To this function input is station Id. Along with this,scatter plot for current year also calculated'''
