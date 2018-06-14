@@ -79,22 +79,9 @@ def accGddPlot(stationId) :
         plt.savefig('data/'+filename,index=False) 
 
         
-""" Script for accGdd to accept three input station ids
-    this function downloads and then save accumulated Gdd's over period of time
-Args:
-    stationid (int):  this parameter is for the station id of a specific city
-    stationid (int):  this parameter is for the station id of a specific city
-    stationid (int):  this parameter is for the station id of a specific city
-"""
-
-def accGddPlotMain(stationId1,stationId2,stationId3) :
-    accGddPlot(stationId1)
-    accGddPlot(stationId2)
-    accGddPlot(stationId3)
     
 if __name__=="__main__":
-    stationId1 = int(sys.argv[1])
-    stationId2 = int(sys.argv[2])
-    stationId3 = int(sys.argv[3])
+    stationId = int(sys.argv[1])
+   
 
-    accGddPlotMain(stationId1, stationId2, stationId3)
+    accGddPlot(stationId)
