@@ -5,7 +5,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+""" Script for calculating accumulated Gdd
+    this function downloads and then save accumulated Gdd's over period of time
+Args:
+    stationid (int):  this parameter is for the station id of a specific city
+
+"""
 def accGddPlot(stationId) :
+    
     allCsvFiles=glob.glob('gddvalues_'+str(stationId)+'.csv')
     for csv in allCsvFiles:
         fileName=csv 
@@ -28,8 +35,8 @@ def accGddPlot(stationId) :
         ax.set_xlabel('Year')
         ax.set_ylabel('cumulative growing degree days(>50°F)')
         avgGdd=[]
-        ##
         
+        # This is to calculate average temperatures for every day from 1981 to 2010
         years=list(range(int(fromYear),int(2011)))
         meanrepl=np.zeros(364)
         for y in years:
@@ -39,13 +46,15 @@ def accGddPlot(stationId) :
             a = np.array([meanrepl,gddValYears])
             meanVal=np.nanmean(a,axis=0)
             meanrepl=meanVal
-            
+        
+        # Calculates cummulative gdd for 1981 to 2010
         cumdata1=np.cumsum(meanrepl)
         cumdata1=np.array(cumdata1)
         avgGdd.append(cumdata1[len(cumdata1)-1])
         xAx = np.linspace(1,12,len(cumdata1),endpoint=True)
         ax.plot(xAx,cumdata1,label ="1981-2010 Normals",linewidth = 2)
         
+        #This is to calculate cummlative gdd for rest of the years
         for y in year:
             yearVal=y
             t=data_frame2[data_frame2['Date'].str.contains(str(yearVal)+"-")]
