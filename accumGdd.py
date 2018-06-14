@@ -9,7 +9,6 @@ import pandas as pd
     this function downloads and then save accumulated Gdd's over period of time
 Args:
     stationid (int):  this parameter is for the station id of a specific city
-
 """
 def accGddPlot(stationId) :
     
@@ -78,3 +77,18 @@ def accGddPlot(stationId) :
         plt.xticks(np.arange(12),('1-Jan', '1-Feb', '1-Mar', '1-Apr', '1-May', '1-Jun', '1-Jul', '1-Aug', '1-Sep', '1-Oct', '1-Nov', '1-Dec')) 
         filename=str(stationId)+'accGdd.png'
         plt.savefig('data/'+filename,index=False) 
+
+        
+""" Script for accGdd to accept three input station ids
+    this function downloads and then save accumulated Gdd's over period of time
+Args:
+    stationid (int):  this parameter is for the station id of a specific city
+    stationid (int):  this parameter is for the station id of a specific city
+    stationid (int):  this parameter is for the station id of a specific city
+"""
+
+def accGddPlotMain(stationId1,stationId2,stationId3) :
+    accGddPlot(stationId1)
+    accGddPlot(stationId2)
+    accGddPlot(stationId3)
+    
