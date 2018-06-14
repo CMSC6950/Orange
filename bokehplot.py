@@ -17,6 +17,7 @@ from bokeh.io import output_file, save
 from bokeh.plotting import figure
 from bokeh.layouts import column
 import pandas as pd
+#from datetime import datetime, timedelta
 
 #importing the 3 cities in which the bokeh plot will be created from
 ottawa = pd.read_csv("data/gddvalues_49568.csv", header=None)
@@ -25,6 +26,11 @@ victoria = pd.read_csv("data/gddvalues_51337.csv", header=None)
 
 #list of days
 days=list(range(0,len(ottawa)))
+
+#attempt at putting actual dates in bokeh
+#for day_count in range(0, 366) :
+#    curr_date_object = datetime.strptime('2016-01-01', '%Y-%m-%d') + timedelta(days=day_count)
+#    print(curr_date_object.strftime("%d %b"))
 
 #creating list from panda dataframe
 gdd_ottawa =ottawa.iloc[:][1].tolist()
