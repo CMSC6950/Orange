@@ -65,3 +65,10 @@ def gddPlot(stationId) :
         ax.scatter(x,scatGdd,alpha=0.7,color='black',label=toYear)
         plt.legend(loc='upper right',)
         plt.savefig('data/SecondTask1.png',index=False) 
+
+if __name__=="__main__":
+    stationId = int(sys.argv[1])
+    
+
+    gddPlot(stationId)        
+        
