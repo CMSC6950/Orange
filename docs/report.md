@@ -52,7 +52,7 @@ from 1960 to 2010.
 
 2. Showing annual cycle of min/max daily temperatures for selected Canadian cities. We did this analysis on Montreal, Victoria, and Ottawa for 2016.
 
-.center[![MinMaxPlot](http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png)]
+.center[<img src="http://www.cs.mun.ca/~charlesc/cmsc6950/MinMaxPlot.png" width="400"]
 
 ---
 
