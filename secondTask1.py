@@ -33,6 +33,7 @@ def gddPlot(stationId) :
         fromYear=x[0]
         toYear=x[-1]
         year=list(range(int(fromYear),int(toYear)+1))
+        divVal=np.abs(int(toYear)-int(fromYear))
         meanrepl=np.zeros(364)
         
         # This loop is to calculate gdd mean by looping thru every year 
@@ -40,10 +41,11 @@ def gddPlot(stationId) :
             yearVal=y
             t=data_frame2[data_frame2['Date'].str.contains(str(yearVal)+"-")]
             gddVal=np.array(t['GDD'])
-            a = np.array([meanrepl,gddVal])
-            meanVal=np.nanmean(a,axis=0)
-            meanrepl=meanVal
-            
+            a=np.add(meanrepl,gddVal)
+            meanrepl=a
+        
+        meanrepl=np.array(meanrepl)
+        meanrepl=meanrepl/(divVal)
         fig = plt.figure(figsize=(20,20))
         ax = fig.add_subplot(111)
         
