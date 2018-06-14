@@ -1,6 +1,16 @@
 TBASE=0
 TUPPER=55
 
+TEMPERATURE_CORE_1=data/temperatures_3932.csv
+TEMPERATURE_CORE_2=data/temperatures_5415.csv
+#TEMPERATURE_CORE_3=data/temperatures_3932.csv
+GDD_CORE_1=data/gddvalues_3932.csv
+GDD_CORE_2=data/gddvalues_5415.csv
+#GDD_CORE_2=data/gddvalues_5415.csv
+ACCUMGDD_1=data/3932accGdd.png
+ACCUMGDD_2=data/5415accGdd.png
+#ACCUMGDD_3=data/3932accGdd.png
+
 PREP=data
 
 TEMPERATURE_LONG_MONTREAL=data/temperatures_5415.csv
@@ -40,7 +50,7 @@ NLSEED=data/nlseedplot.png
 MAXMINPLOTS=data/MinMaxPlot.png
 BOKEHPLOT=data/bokehplot.html
 
-ALL: $(PREP) $(MAXMINPLOTS) $(NLSEED) $(BOKEHPLOT) $(NLWHEAT) $(MONTREAL_REGRESSION)
+ALL: $(PREP) $(MAXMINPLOTS) $(NLSEED) $(BOKEHPLOT) $(NLWHEAT) $(MONTREAL_REGRESSION) $(ACCUMGDD_1) $(ACCUMGDD_2)
 
 $(MONTREAL_REGRESSION): $(GDD_LONG_MONTREAL)
 	./linearReg.py
@@ -83,6 +93,24 @@ $(TEMPERATURE_STJOHNS):
 
 $(TEMPERATURE_CHARLESTON):
 	./downloadData.py 6599 1995 2004
+
+$(GDD_CORE_1): $(TEMPERATURE_CORE_1)
+	./gdd.py $(TEMPERATURE_CORE_1) $(TBASE) $(TUPPER)
+
+$(GDD_CORE_2): $(TEMPERATURE_CORE_2)
+	./gdd.py $(TEMPERATURE_CORE_2) $(TBASE) $(TUPPER)
+
+$(ACCUMGDD_1): $(GDD_CORE_1)
+	./accumGdd.py 3932
+
+$(ACCUMGDD_2): $(GDD_CORE_2)
+	./accumGdd.py 5415
+
+$(TEMPERATURE_CORE_1):
+	./downloadData.py 3932 1981 2016
+
+$(TEMPERATURE_CORE_2):
+	./downloadData.py 5415 1981 2016
 
 $(TEMPERATURE_GANDER):
 	./downloadData.py 6633 1995 2004
