@@ -66,7 +66,7 @@ def accGddPlot(stationId) :
             ax.plot(x,cumdata2,label =y,linewidth = 2)
 
         plt.legend(loc='lower right')
-        plt.title("For station :"+str(stationId)+" as of 2016-Growing Degree days comparision(>50°F)")
+        plt.title("For station :"+str(stationId)+" as of 2016-Growing Degree days comparisions")
         plt.annotate("Cumulative Growing degree days\n"+
                "as of 2016\n"+"1981 -2010 Average = "+str(avgGdd[0])+"\n"
                 +"Recent cool year-2010 = "+str(avgGdd[1])+"\n"
